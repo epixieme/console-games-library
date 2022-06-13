@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Console Game library</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
    <header>
@@ -37,21 +37,22 @@
   <% for(var i = 0; i < games.length; i++) {%>
     <li class="game">
       <!-- Output title from the iterated quote object -->
-      <span><%= games[i].title %></span>
+      <span id ='title' class = 'elements' contentEditable="false"><%= games[i].title %></span>
       <!-- Output release from the iterated quote object -->
-      <span><%= games[i].release %></span>
+      <span id ='release' class = 'elements'contentEditable="false"><%= games[i].release %></span>
        <!-- Output developer from the iterated quote object -->
-      <span><%= games[i].developer %></span>
+      <span id='developer' class = 'elements'contentEditable="false"><%= games[i].developer %></span>
         <!-- Output release from the iterated quote object -->
-        <span><%= games[i].platform %></span>
-     <button class ='editGame'>Edit</button>
+        <span id='platform' class = 'elements'contentEditable="false"><%= games[i].platform %></span>
+     <button class='editGame'>Edit</button>
+     <button class ='updateGame'>Update</button>
     </li>
   <% } %>
 
 
 </ul>
 
-<script src="/public/main.js"></script>
+<script src="/main.js"></script>
    
 </body>
 </html>

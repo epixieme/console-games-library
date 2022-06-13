@@ -33,10 +33,14 @@ MongoClient.connect(process.env.MONGO_URI, {
     // ========================
         // All your handlers here...
     app.get('/', (req, res) => {
-        db.collection('games').find().toArray()
-          .then(data => {
-            res.render('index.ejs', { games: data })
+ 
+    
+       gamesCollection.find().toArray()
+          .then(games => {
+            res.render('index.ejs', { games: games })//=
+            console.log('this is ' +  games)
           })
+  
           .catch(error=>console.log(error))
       })
 
@@ -45,10 +49,29 @@ MongoClient.connect(process.env.MONGO_URI, {
         // why did leon add individuls eg req.body.title
         .then(result => {
           console.log(result)
+          res.redirect('/')// this means to refresh page to display new item
         })
         .catch(error => console.error(error))
     });
-    app.put()
+    app.put('/games', (request, response) => {
+      db.collection('games').updateOne(request.body,{
+          $set: {// taken from ejs file variables
+              title:request.body.title,
+              release:request.body.release,
+             platform:request.body.platform,
+              developer:request.body.developer
+            }
+      },{
+          // sort: {_id: -1},
+          upsert: true
+      })
+      .then(result => {
+          console.log('Added One Like')
+          response.json('Like Added')
+      })
+      .catch(error => console.error(error))
+  
+  })
 
   })
   .catch((error) => console.error(error));
