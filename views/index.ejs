@@ -36,6 +36,7 @@
   <!-- Loop through games -->
   <% for(var i = 0; i < games.length; i++) {%>
     <li class="game">
+      <span id ='id' class = 'elements'><%= games[i]._id %></span>
       <!-- Output title from the iterated quote object -->
       <span id ='title' class = 'elements' contentEditable="false"><%= games[i].title %></span>
       <!-- Output release from the iterated quote object -->
