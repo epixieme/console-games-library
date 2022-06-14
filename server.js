@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const app = express();
-const ObjectID = require('mongodb').ObjectID; 
+const ObjectID = require('mongodb').ObjectId;
 
 require("dotenv").config();
 
@@ -57,15 +57,16 @@ MongoClient.connect(process.env.MONGO_URI, {
       console.log(request.body.id);
       db.collection("games")
         .updateOne(
-          { _id: request.body.id },//works with title:'yoda'
+          { _id:new  
+            ObjectID(request.body.id)},//search by id
           {
             $set: {
-              // taken from ejs file variables
+              // taken from ejs file variables and update these fields
               title: request.body.title,
               release: request.body.release,
               platform: request.body.platform,
               developer: request.body.developer,
-              _id:request.body.id
+            
             },
           },
           {
