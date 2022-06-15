@@ -35,7 +35,7 @@ MongoClient.connect(process.env.MONGO_URI, {
         .find()
         .toArray()
         .then((games) => {
-          res.render("index.ejs", { games: games }); //=
+          res.render("index.ejs", { games: games }); // this is data from the mongodb collection
           console.log("this is " + games);
         })
 
@@ -61,7 +61,7 @@ MongoClient.connect(process.env.MONGO_URI, {
             ObjectID(request.body.id)},//search by id
           {
             $set: {
-              // taken from ejs file variables and update these fields
+              //updates the db 
               title: request.body.title,
               release: request.body.release,
               platform: request.body.platform,
@@ -77,6 +77,7 @@ MongoClient.connect(process.env.MONGO_URI, {
         .then((result) => {
           console.log("Added One Like");
           response.json("Like Added");
+          res.redirect("/"); // creates a refresh and does a get() gets the ejs with the new data added from games object. see get request above.
         })
         .catch((error) => console.error(error));
     });

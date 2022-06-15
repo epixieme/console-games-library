@@ -40,7 +40,7 @@ async function updateGameInfo(id,title,release,developer,platform) {
   await fetch("/games", {
     method: "put",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+    body: JSON.stringify({// Send these as a string to the server
       title: title, // have to find a way to update the field on input
       release: release,
       developer:developer,
