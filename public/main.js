@@ -5,11 +5,11 @@ const update = document.querySelectorAll(".updateGame");
 
 
 let editArray = Array.from(edit).forEach((element) => {
-  element.addEventListener("click", editGameInfo);
+  element.addEventListener("click", editGameInfo);/// hears the click and calls editGameInfo
 });
 
 let updateArray = Array.from(update).forEach((element) => {
-  element.addEventListener("click", editGameInfo);
+  element.addEventListener("click", editGameInfo);/// hears the click editGameInfo
 });
 
 async function editGameInfo(event) {
@@ -23,6 +23,7 @@ async function editGameInfo(event) {
   const developer = target.parentNode.childNodes[13].innerText
   const platform = target.parentNode.childNodes[17].innerText
   console.log(title)
+
   if (target.classList.contains("editGame")) {
     fieldsArray.forEach((item) => item.setAttribute("contenteditable", true));
     
@@ -35,7 +36,7 @@ async function editGameInfo(event) {
   }
 }
 
-async function updateGameInfo(id,title,release,developer,platform) {
+async function updateGameInfo(id,title,release,developer,platform) { 
     console.log('id' + id)
   await fetch("/games", {
     method: "put",
