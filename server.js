@@ -26,6 +26,8 @@ MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true,})
     // Routes
     // ========================
     // All your handlers here...
+
+
     app.get("/", (req, res) => {
       gamesCollection
         .find()
@@ -84,9 +86,7 @@ MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true,})
     db.collection("games")
     .deleteOne(
     {  title: request.body.title,
-      release: request.body.release,
-      platform: request.body.platform,
-      developer: request.body.developer,}
+     }
     )
     .then((result) => {
       console.log('checking')
