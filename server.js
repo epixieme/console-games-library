@@ -58,10 +58,10 @@ MongoClient.connect(process.env.MONGO_URI, {
       db.collection("games")
         .updateOne(
           { _id:new  
-            ObjectID(request.body.id)},//search by id
+            ObjectID(request.body.id)},//search and match by id
           {
             $set: {
-              //updates the db 
+              //updates the following docuent object properties and values the db 
               title: request.body.title,
               release: request.body.release,
               platform: request.body.platform,
