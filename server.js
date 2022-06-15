@@ -6,13 +6,9 @@ const ObjectID = require('mongodb').ObjectId;
 
 require("dotenv").config();
 
-// console.log(process.env);
-
 // enables express to read info from forms
 
-MongoClient.connect(process.env.MONGO_URI, {
-  useUnifiedTopology: true,
-})
+MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true,})
   .then((client) => {
     console.log("Connected to Database");
     const db = client.db("console-games-library"); // renames the db
@@ -53,6 +49,7 @@ MongoClient.connect(process.env.MONGO_URI, {
         })
         .catch((error) => console.error(error));
     });
+
     app.put("/games", (request, response) => {
       console.log(request.body.id);
       db.collection("games")
@@ -81,10 +78,32 @@ MongoClient.connect(process.env.MONGO_URI, {
         })
         .catch((error) => console.error(error));
     });
+
+
+  app.delete("/deleteGames",(request,response)=>{
+    db.collection("games")
+    .deleteOne(
+    {  title: request.body.title,
+      release: request.body.release,
+      platform: request.body.platform,
+      developer: request.body.developer,}
+    )
+    .then((result) => {
+      console.log('checking')
+    
+      // console.log("Added One Like");
+      response.json("game deleted");
+      // res.redirect("/"); // creates a refresh and does a get() gets the ejs with the new data added from games object. see get request above.
+    })
+    .catch((error) => console.error(error));
   })
-  .catch((error) => console.error(error));
+    // ========================
+    // Listen
+    // ========================
 
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  console.log(`Server running on port ${PORT}`);// set up heroku part  process.env.PORT || PORT so heroku or local port
+})
+})
+.catch(console.error)
