@@ -1,11 +1,157 @@
-.gamesSubmit{
-    display:flex;
-    background:red;
-    height:50px;
-    align-items: center;
+:root{
+    --header-font:'Rubik', sans-serif;
+    --h1-size:2rem;
+    --h2-size:3.6rem
+    --h1-size-large:4rem;
+    --h2-size-large:5rem
+    
+}
+
+h1{
+    font-size:  var(--h1-size)
+}
+ h2{
+    font-size: var(--h2-size)
+ }
+
+html{
+    font-size:100%;
+    font-family: 'Nunito Sans', sans-serif;
+}
+h2{
+
+   margin-top:0;
+    
+   text-transform: uppercase;
+ 
+   background-image: url(/5162027.jpg);
+   background-position: center;
+ 
+   background-size: cover;
+   -webkit-text-fill-color: transparent;
+   -webkit-background-clip: text;
+   background-color: #f9fafb;
+}
+
+h1{
+    position: relative;
+    z-index: 2;
+  color:white;
+    text-transform: uppercase;
+
+}
+
+
+header{
+    position: relative;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-family:var(  --header-font);
+    text-align: center;
+    background:#262830;
+    color: black;
+    line-height: 6.5rem;
+    overflow: hidden;
+    width: 100%; 
+    height: 20vh;
+}
+
+header:before {
+    content: '';
+    position: absolute;
+    top:0; 
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background:url(/26284.jpg);
+    background-position:center;
+    background-size: 80%;
+    border-radius: 0 0 50% 50%/ 0 0 100% 100%;
+    transform: scaleX(1.5); 
+}
+
+input{
+    padding:5px;
 }
 
 #id{
     display:none;
 }
+main{
+    padding:35px;
+
+}
+
+ul {
+    list-style: none;
+}
+
+.gamesSubmit{
+    display: flex;
+    flex-direction: column;
+background: #262830;
+    color:white;
+
+  
+    
+}
+
+.gamesSubmit button{
+    background:#FF392B;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius: 10px;;
+   }
+
+
+   .deleteGame,.editGame, .updateGame{
+    height: 1.5%;
+    width: 1.5%;
+    fill:#FF392B;;
+   }
+
+@media (min-width: 600px) {
+    header{
+    
+      font-weight: 700;
+
+    }
+ 
+h1{
+    font-size: var(--h2-size-large);
+}
+
+h2{
+
+    font-size: var(--h2-size-large);
+}
+ #visual{
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    z-index: 1;
+    /* height: 10vw; */
+    /* set height to pixels if you want angle to change with screen width */
+}
+
+.gamesSubmit{
+  
+    flex-direction: row;
+   
+    width:100%;
+    height:100px;
+    align-items: center;
+    justify-content: space-evenly;
+    /* padding:0 0 0 60px; */
+}
+
+
+  }
+
+ 
+
+

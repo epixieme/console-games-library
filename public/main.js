@@ -16,7 +16,7 @@ const deleteArray = Array.from(deleteGame).forEach((element) => {
   element.addEventListener("click", deleteGameInfo); /// hears the click editGameInfo
 });
 
-async function editGameInfo(event) {
+function editGameInfo(event) {
   const target = event.target;
   let fields = target.parentNode.children;
 
@@ -33,6 +33,7 @@ async function editGameInfo(event) {
 
   if (target.classList.contains("editGame")) {
     fieldsArray.forEach((item) => item.setAttribute("contenteditable", true));
+    // document.querySelectorAll('.elements').contenteditable.foreach(item=>item.style.border='red solid 1px')
   } else if (target.classList.contains("updateGame")) {
     fieldsArray.forEach((item) => item.setAttribute("contenteditable", false));
     // get the element text from the fields and put into post below on update
