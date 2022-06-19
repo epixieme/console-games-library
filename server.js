@@ -19,8 +19,8 @@ MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true,})
     // ========================
     app.set("view engine", "ejs");
     // Make sure you place body-parser before your CRUD handlers!
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
+    app.use(express.urlencoded({extended:true})); 
+    app.use(express.json());
     app.use(express.static("public")); // make public folder accessible
     // ========================
     // Routes
