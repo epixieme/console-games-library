@@ -75,8 +75,8 @@ MongoClient.connect(process.env.MONGO_URI, {useUnifiedTopology: true,})
         )
         .then((result) => {
           console.log("Added One Like");
-          response.json("Like Added");
-          res.redirect("/"); // creates a refresh and does a get() gets the ejs with the new data added from games object. see get request above.
+          response.json("game updated");
+          response.redirect("/"); // creates a refresh and does a get() gets the ejs with the new data added from games object. see get request above.
         })
         .catch((error) => console.error(error));
     });

@@ -72,6 +72,13 @@ header:before {
     transform: scaleX(1.5); 
 }
 
+header input{
+    position: relative;
+  
+    background: white;
+    z-index: 2;
+    
+}
 input{
     padding:5px;
 }
@@ -83,12 +90,38 @@ main{
     padding:35px;
 
 }
+.games{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap:30px;
 
-ul {
-    list-style: none;
+}
+.card{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border:1px solid red; */
+    height:400px;
+    width:100%;
+    border-radius: 5px;;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    border:2px solid rgba(0, 0, 0, 0.2);
+}
+
+label{
+    display: flex;
+    justify-content: flex-start;
+  
+}
+span{
+    padding:10px;
 }
 
 .gamesSubmit{
+    list-style: none;
     display: flex;
     flex-direction: column;
 background: #262830;
@@ -104,22 +137,36 @@ background: #262830;
     color:white;
     border:none;
     padding:10px;
-    border-radius: 10px;;
+    border-radius: 10px;
+    width:30%;
    }
 
 
    .deleteGame,.editGame, .updateGame{
-    height: 1.5%;
-    width: 1.5%;
-    fill:#FF392B;;
+    min-height: 10%;
+    min-width: 20%;
+    background:#FF392B;;
    }
 
 @media (min-width: 600px) {
     header{
-    
+
       font-weight: 700;
 
     }
+    nav{
+display: flex;
+flex-direction: row;
+    }
+
+    header input{
+
+     
+        background: white;
+       
+        
+    }
+
  
 h1{
     font-size: var(--h2-size-large);
@@ -146,7 +193,13 @@ h2{
     height:100px;
     align-items: center;
     justify-content: space-evenly;
-    /* padding:0 0 0 60px; */
+  
+}
+
+.gamesSubmit button{
+  
+ width:10%;
+  
 }
 
 
