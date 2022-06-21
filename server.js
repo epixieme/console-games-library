@@ -58,7 +58,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
         .catch((error) => console.log(error));
     });
 
-    app.get("/search", (req, res) => {
+    app.get("/search", (req, res) => {// listens for post request in main.js
       //https://stackoverflow.com/questions/32673261/find-query-in-mongodb-dont-return-data
       //https://mongodb.github.io/node-mongodb-native/markdown-docs/queries.html#making-queries-with-find
      
@@ -67,7 +67,8 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
       gamesCollection.find({ $text: { $search: search } }).toArray(function(err, results){
         // console.log(results);
             res.render("index.ejs", { games:results });// got to work out how to return to the main search page. maybe use a reset button that fetches get '/'
-    });     
+    });
+   
     });
 
     
