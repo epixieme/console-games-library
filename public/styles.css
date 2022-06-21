@@ -7,6 +7,14 @@
     
 }
 
+.search{
+    position: relative;
+    border:1px solid white;
+    width:80px;
+    height:40px;
+    z-index: 1;
+}
+
 h1{
     font-size:  var(--h1-size)
 }
@@ -206,5 +214,4 @@ h2{
   }
 
  
-
 

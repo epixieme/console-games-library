@@ -4,6 +4,8 @@ const edit = document.querySelectorAll(".editGame");
 const update = document.querySelectorAll(".updateGame");
 const deleteGame = document.querySelectorAll(".deleteGame");
 
+const searchBtn = document.querySelectorAll('.button')
+
 const editArray = Array.from(edit).forEach((element) => {
   element.addEventListener("click", editGameInfo); /// hears the click and calls editGameInfo
 });
@@ -15,6 +17,8 @@ const updateArray = Array.from(update).forEach((element) => {
 const deleteArray = Array.from(deleteGame).forEach((element) => {
   element.addEventListener("click", deleteGameInfo); /// hears the click editGameInfo
 });
+
+// searchBtn.addEventListener('click',searchGameInfo)
 
 function editGameInfo(event) {
   const target = event.target;
@@ -54,6 +58,8 @@ function editGameInfo(event) {
 }
 
 async function updateGameInfo(id, title, release, developer, platform) {
+  
+  try {
   await fetch("/games", {
     method: "put",
     headers: { "Content-Type": "application/json" },
@@ -66,7 +72,10 @@ async function updateGameInfo(id, title, release, developer, platform) {
       id: id,
     }),
   });
+} catch (err) {}
 }
+
+
 
 async function deleteGameInfo(event) {
   console.log("delete");

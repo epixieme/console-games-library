@@ -18,8 +18,9 @@
     <header>
       <nav>
         <h1>Console Game Collections</h1>
-        <form action="">
-          <input type="text" name="search" id="">
+        <form action="/search" method="GET">
+          <input class ='searchField' type="text" name="search" id="">
+          <button type ='submit' class ='search'>Search</button>
         </form>
       </nav>
       
@@ -54,6 +55,7 @@
    
       <h3>Games</h3>
       <section class="games">
+  
         <!-- Loop through games -->
         <% for(var i = 0; i < games.length; i++) {%>
        
@@ -89,6 +91,7 @@
   
     </main>
 
+   
     <script src="/main.js"></script>
   </body>
 </html>
