@@ -1,239 +1,335 @@
-:root{
-    --header-font:'Rubik', sans-serif;
-    --h1-size:2rem;
-    --h2-size:3.6rem
-    --h1-size-large:4rem;
-    --h2-size-large:5rem
-    
+/* Box Model Hack */
+* {
+    box-sizing: border-box;
 }
 
-.search{
+/* Clear fix hack */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.clear {
+   clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+:root {
+    --header-font: 'Rubik', sans-serif;
+    --h1-size: 2rem;
+    --h1-size-large: 4rem;
+    --h2-size-large: 5rem
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+
+.formWrapper {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    background: #262830;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: center;
+    align-items: center;
+    height:300px;
+    padding-top: 30px;
+}
+
+.search {
     position: relative;
-    border:1px solid white;
-    width:80px;
-    height:40px;
+    border: 1px solid white;
+    width: 80px;
+    height: 40px;
     z-index: 1;
+
 }
 
-h1{
-    font-size:  var(--h1-size)
-}
- h2{
-    font-size: var(--h2-size)
- }
-
-html{
-    font-size:100%;
-    font-family: 'Nunito Sans', sans-serif;
-}
-h2{
-
-   margin-top:0;
-    
-   text-transform: uppercase;
- 
-   background-image: url(/5162027.jpg);
-   background-position: center;
- 
-   background-size: cover;
-   -webkit-text-fill-color: transparent;
-   -webkit-background-clip: text;
-   background-color: #f9fafb;
+.searchField {
+    width: 200px;
+    height: 40px;
 }
 
-h1{
+
+
+
+
+.submitField {
+    width: 100%;
+    height: 40px;
+}
+
+h1 {
+    font-size: var(--h1-size);
     position: relative;
     z-index: 2;
-  color:white;
+    color: white;
     text-transform: uppercase;
-
 }
 
+html {
+    font-size: 100%;
+    font-family: 'Nunito Sans', sans-serif;
+}
 
-header{
+header {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family:var(  --header-font);
+    font-family: var(--header-font);
     text-align: center;
-    background:#262830;
-    color: black;
-    line-height: 6.5rem;
+    background: #262830;
+    line-height: 2.5rem;
     overflow: hidden;
-    width: 100%; 
-    height: 20vh;
+    width: 100%;
+    height: 25vh;
 }
 
 header:before {
     content: '';
     position: absolute;
-    top:0; 
+    top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
-    background:url(/26284.jpg);
-    background-position:center;
+    height: 100%;
+    background: url(/26284.jpg);
+    background-position: center;
     background-size: 80%;
     border-radius: 0 0 50% 50%/ 0 0 100% 100%;
-    transform: scaleX(1.5); 
+    transform: scaleX(1.5);
 }
 
-header input{
+header input {
     position: relative;
-  
+
     background: white;
     z-index: 2;
-    
-}
-input{
-    padding:5px;
-}
-
-#id{
-    display:none;
-}
-main{
-    padding:35px;
 
 }
-.games{
+
+input {
+    padding: 5px;
+}
+
+#id {
+    display: none;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 35px;
+
+}
+
+.games {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    gap:30px;
-
+    gap: 30px;
 }
-.card{
+
+.game{
+    display: flex;
+    justify-content: center;
+}
+
+.card {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     /* border:1px solid red; */
-    height:400px;
-    width:100%;
-    border-radius: 5px;;
+    height: 400px;
+    width: 100%;
+    border-radius: 5px;
+    ;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     /* border:2px solid rgba(0, 0, 0, 0.2); */
 }
 
-label{
+label {
     display: flex;
     justify-content: flex-start;
-  
-}
-span{
-    padding:10px;
+
 }
 
-.gamesSubmit{
-    list-style: none;
+span {
+    padding: 10px;
+}
+
+.buttonWrapper {
+    width: 100%;
     display: flex;
-    flex-direction: column;
-background: #262830;
-    color:white;
-
-  
-    
+    justify-content: center;
+    padding: 35px 0;
 }
 
-.gamesSubmit button{
-    background: rgb(82,21,44);
-    background: linear-gradient(90deg, rgba(82,21,44,1) 17%, rgba(254,75,26,1) 100%);
+.gamesSubmit {
+    list-style: none;
+
+    /* flex-direction: column; */
+    background: #262830;
+    color: white;
+
+
+
+}
+
+.uploads{
+    height:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:20px;
+    width: 100%;
+
+}
+
+.uploads input{
+    width: 70%;
+}
+
+
+
+.gamesSubmit button {
+    background: rgb(82, 21, 44);
+    background: linear-gradient(90deg, rgba(82, 21, 44, 1) 17%, rgba(254, 75, 26, 1) 100%);
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    color:white;
-    border:none;
-    padding:10px;
+    color: white;
+    border: none;
+    padding: 10px;
     /* border-radius: 10px; */
-    width:30%;
-   }
+margin:20px;
+    height: 40px;
+    width: 100%;
+}
+    
+    .gamesSubmit button:hover{
+        background:black;
+    }
 
 
-   .deleteGame,.editGame, .updateGame{
+.deleteGame,
+.editGame,
+.updateGame {
     min-height: 10%;
     min-width: 20%;
-    background: rgb(82,21,44);
-    background: linear-gradient(90deg, rgba(82,21,44,1) 17%, rgba(254,75,26,1) 100%);
-    color:white;
-    border:none;
-    padding:10px;
-   }
-
-
-   .search{
-    background: rgb(82,21,44);
-    background: linear-gradient(90deg, rgba(82,21,44,1) 17%, rgba(254,75,26,1) 100%);
-    color:white;
-    border:none;
-    padding:10px;
-   }
-
-@media (min-width: 600px) {
-    header{
-
-      font-weight: 700;
-
-    }
-    nav{
-display: flex;
-flex-direction: row;
-    }
-
-    header input{
-
-     
-        background: white;
-       
-        
-    }
-
- 
-h1{
-    font-size: var(--h2-size-large);
+    background: rgb(82, 21, 44);
+    background: linear-gradient(90deg, rgba(82, 21, 44, 1) 17%, rgba(254, 75, 26, 1) 100%);
+    color: white;
+    border: none;
+    padding: 10px;
 }
 
-h2{
 
-    font-size: var(--h2-size-large);
-}
- #visual{
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
-    z-index: 1;
-    /* height: 10vw; */
-    /* set height to pixels if you want angle to change with screen width */
+.search {
+    background: rgb(82, 21, 44);
+    background: linear-gradient(90deg, rgba(82, 21, 44, 1) 17%, rgba(254, 75, 26, 1) 100%);
+    color: white;
+    border: none;
+    padding: 10px;
 }
 
-.gamesSubmit{
+@media (min-width: 800px) {
+
+    .game{
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .grid {
+        display: flex;
+        align-items: center;
+      justify-content: space-evenly;
+        flex-direction: row;
+        height:100px;
+        padding:0 35px;
+        gap:20px;
   
-    flex-direction: row;
+    }
+
+    header {
+
+        font-weight: 700;
+
+    }
+
    
-    width:100%;
-    height:100px;
-    align-items: center;
-    justify-content: space-evenly;
-  
+
+    header input {
+
+
+        background: white;
+
+
+    }
+
+
+    h1 {
+        font-size: var(--h2-size-large);
+    }
+
+    h2 {
+
+        font-size: var(--h2-size-large);
+    }
+
+    #visual {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        z-index: 1;
+        /* height: 10vw; */
+        /* set height to pixels if you want angle to change with screen width */
+    }
+
+    .gamesSubmit {
+
+        /* flex-direction: row; */
+
+        /* width: 100%; */
+        /* height: 100px; */
+        /* align-items: center;
+        justify-content: space-evenly; */
+
+    }
+
+    .gamesSubmit button {
+
+        /* width: 10%; */
+
+    }
+
+    .card {
+
+
+        height: 400px;
+        width: 30%;
+
+    }
+
+
 }
-
-.gamesSubmit button{
-  
- width:10%;
-  
-}
-
-.card{
-
-  
-    height:400px;
-    width:30%;
-
-}
-
-
-  }
-
- 
-

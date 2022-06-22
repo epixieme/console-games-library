@@ -18,7 +18,7 @@ const deleteArray = Array.from(deleteGame).forEach((element) => {
   element.addEventListener("click", deleteGameInfo); /// hears the click editGameInfo
 });
 
-// searchBtn.addEventListener('click',searchGameInfo)
+
 
 function editGameInfo(event) {
   const target = event.target;
@@ -31,21 +31,22 @@ function editGameInfo(event) {
   console.log(document.getElementsByName("title")[0].value); /// how can I make this section dryer - maybe an object? could I use this query selector and a conidtion? https://bobbyhadz.com/blog/javascript-get-data-attribute-from-event-object
   // grabs all of the dom element (span) innertext for the target
   const id = target.parentNode.parentNode.childNodes[1].innerText; /// take it from the live value?
-  console.log(id);
+  console.log( target.parentNode.parentNode.childNodes);
   const title = target.parentNode.parentNode.childNodes[5].innerText;
-  console.log(title);
+
   const release = target.parentNode.parentNode.childNodes[9].innerText;
   const developer = target.parentNode.parentNode.childNodes[13].innerText;
   const platform = target.parentNode.parentNode.childNodes[17].innerText;
-  // console.log(title);
 
+  // const [id,title,release,developer,platform]=fieldsArray work  out how to deconstruct
+ 
   if (target.classList.contains("editGame")) {
     fieldsArray.forEach((item) => {
       item.setAttribute("contenteditable", true);
       item.style.border = "1px solid grey";
       item.style.borderRadius = "10px";
     });
-    // document.querySelectorAll('.elements').contenteditable.foreach(item=>item.style.border='red solid 1px')
+
   } else if (target.classList.contains("updateGame")) {
     fieldsArray.forEach((item) => {
       item.setAttribute("contenteditable", false);

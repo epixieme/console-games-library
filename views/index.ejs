@@ -16,35 +16,35 @@
   </head>
   <body>
     <header>
-      <nav>
+  
         <h1>Console Game Collections</h1>
         
-      </nav>
-      
-     
-    
     </header>
     <!-- give an action name -->
     <section class="formWrapper">
       <form class="gamesSubmit" action="/games" method="POST">
+        <section class="grid">
         <label for="title"
           >Title </label>
-          <input type="text" placeholder="Title of Game" name="title" />
+          <input class ='submitField' type="text" placeholder="Title of Game" name="title" />
        
 
         <label for="release"
-          >Release Date</label>
-          <input type="text" placeholder="Game Release Date" name="release" />
+          >Released</label>
+          <input class ='submitField' type="text" placeholder="Game Release Date" name="release" />
         
         <label for="developer"
           >Developer</label>
-          <input type="text" placeholder="Game Developer" name="developer" />
+          <input class ='submitField' type="text" placeholder="Game Developer" name="developer" />
      
         <label for="platform"
           >Platform</label>
-          <input type="text" placeholder="Platform e.g. PS4" name="platform" />
+          <input class ='submitField' type="text" placeholder="Platform e.g. PS4" name="platform" />
        
-        <button type="submit">Add Game</button>
+        <!-- <section class ='buttonWrapper'>    -->
+          <button type="submit">Submit</button>
+        <!-- </section> -->
+      </section>
       </form>
     </section>
 
@@ -82,10 +82,20 @@
             ><%= games[i].platform %></span
           >
           <section class="buttons">
+        
           <button class="editGame">Edit</button>
+
           <button class="updateGame">Update</button>
           <button class="deleteGame">Delete</button>
+  
         </section>
+        <form action="/images" enctype="multipart/form-data" method="post">
+          <div class="uploads">
+            <input type="file" class="form-control-file" name="uploaded_file">
+            <input type="text" class="form-control" placeholder="upload an image" name="images">
+            <input type="submit" value="Upload" class="btn btn-default">            
+          </div>
+        </form>
           
           </section>
         </section>

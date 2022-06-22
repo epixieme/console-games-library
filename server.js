@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient;
 const app = express();
 const ObjectID = require("mongodb").ObjectId;
-
+const multer  = require('multer')
+const upload = multer({ dest: './public/data/uploads/' })
 require("dotenv").config();
 
 // enables express to read info from forms
@@ -16,11 +17,9 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
    
  
 // gamesCollection.insertMany([
-//   {"title": "Cafecito", "release": "A sweet and rich Cuban hot coffee made by topping an espresso shot with a thick sugar cream foam."},
-//   {"title": "New Orleans Coffee", "release": "Cafe Noir from New Orleans is a spiced, nutty coffee made with chicory."},
-//   {"title": "Affogato", "release": "An Italian sweet dessert coffee made with fresh-brewed espresso and vanilla ice cream."},
-//   {"title": "Maple Latte", "release": "A wintertime classic made with espresso and steamed milk and sweetened with some maple syrup."},
-//   {"title": "Pumpkin Spice Latte", "release": "It wouldn't be autumn without pumpkin spice lattes made with espresso, steamed milk, cinnamon spices, and pumpkin puree."}
+//   {"title": "Horizon","release":'2017',"developer":"Guerilla Games","platform":"PS4"},
+//   {"title": "Grand Theft Auto","release":'2013',"developer":"Rockstar Games","platform":"PS4"},
+//   {"title": "Marvel's Spider-Man: Miles Morales","release":'2020',"developer":"Insomniac Games","platform":"PS4"},
 // ])
 
     gamesCollection.createIndex({
@@ -71,6 +70,12 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     });
    
     });
+
+    app.post('/images', upload.single('uploaded_file'), function (req, res) {
+      // req.file is the name of your file in the form above, here 'uploaded_file'
+      // req.body will hold the text fields, if there were any 
+      console.log(req.file, req.body)
+   });
 
     app.post("/games", (req, res) => {
       // takes in the action route from the form
