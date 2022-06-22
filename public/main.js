@@ -58,7 +58,7 @@ function editGameInfo(event) {
 }
 
 async function updateGameInfo(id, title, release, developer, platform) {
-  
+
   try {
   await fetch("/games", {
     method: "put",
@@ -100,4 +100,5 @@ async function deleteGameInfo(event) {
   } catch (err) {}
 }
 
-
+// add condition if input is empty then prevent submit, same for search field
+// add a search reset button or reset on backbutton?

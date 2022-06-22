@@ -13,7 +13,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     console.log("Connected to Database");
     const db = client.db("console-games-library"); // renames the db
     const gamesCollection = db.collection("games"); //creates the collection
-    // gamesCollection.createIndex({ title: 1, release: -1 });
+   
  
 // gamesCollection.insertMany([
 //   {"title": "Cafecito", "release": "A sweet and rich Cuban hot coffee made by topping an espresso shot with a thick sugar cream foam."},
@@ -70,8 +70,6 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     });
    
     });
-
-    
 
     app.post("/games", (req, res) => {
       // takes in the action route from the form
