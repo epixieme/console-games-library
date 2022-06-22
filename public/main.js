@@ -24,7 +24,7 @@ function editGameInfo(event) {
   const target = event.target;
   let fields = target.parentNode.parentNode.children;
   console.log(target.parentNode.parentNode.childNodes);
-  let fieldsArray = Array.from(fields);
+  let fieldsArray = Array.from(fields).splice(0,5);// only edit input fields and not the buttons
   console.log("this is fieldsarray" + fieldsArray);
   //update childnodes to reflect additon of cards section etc
 
@@ -58,7 +58,6 @@ function editGameInfo(event) {
 }
 
 async function updateGameInfo(id, title, release, developer, platform) {
-
   try {
   await fetch("/games", {
     method: "put",

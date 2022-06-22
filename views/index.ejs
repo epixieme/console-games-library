@@ -18,13 +18,7 @@
     <header>
       <nav>
         <h1>Console Game Collections</h1>
-        <form action="/search" method="GET">
-          <input class ='searchField' type="text" name="search" id="">
-          <button type ='submit' class ='search'>Search</button>
-        </form>
-        <form action="/" method="GET">
-          <button type ='submit' class ='search'>Reset</button>
-        </form>
+        
       </nav>
       
      
@@ -58,7 +52,13 @@
    
       <h3>Games</h3>
       <section class="games">
-  
+        <form action="/search" method="GET">
+          <input class ='searchField' type="text" name="search" id="">
+          <button type ='submit' class ='search'>Search</button>
+        </form>
+        <form action="/" method="GET">
+          <button type ='submit' class ='search'>Reset</button>
+        </form>
         <!-- Loop through games -->
         <% for(var i = 0; i < games.length; i++) {%>
        

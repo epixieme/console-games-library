@@ -22,6 +22,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
 //   {"title": "Maple Latte", "release": "A wintertime classic made with espresso and steamed milk and sweetened with some maple syrup."},
 //   {"title": "Pumpkin Spice Latte", "release": "It wouldn't be autumn without pumpkin spice lattes made with espresso, steamed milk, cinnamon spices, and pumpkin puree."}
 // ])
+
     gamesCollection.createIndex({
       title: "text",
       release: "text",
