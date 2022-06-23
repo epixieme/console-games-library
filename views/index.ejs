@@ -89,14 +89,17 @@
           <button class="deleteGame">Delete</button>
   
         </section>
-        <form action="/images" enctype="multipart/form-data" method="post">
-          <div class="uploads">
-            <input type="file" class="form-control-file" name="uploaded_file">
-            <input type="text" class="form-control" placeholder="upload an image" name="images">
-            <input type="submit" value="Upload" class="btn btn-default">            
+        <form method="POST" action="/profile-upload-single" enctype="multipart/form-data">
+          <div>
+              <!-- <label>Upload profile picture</label> -->
+              <input type="file" name="profile-file" required/>
           </div>
-        </form>
-          
+          <div>
+              <input type="submit" value="Upload" />
+          </div>
+      </form>
+      
+        <!-- <div class="uploads"> -->
           </section>
         </section>
         <% } %>

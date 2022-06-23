@@ -102,3 +102,5 @@ async function deleteGameInfo(event) {
 
 // add condition if input is empty then prevent submit, same for search field
 // add a search reset button or reset on backbutton?
+
+// add get request to get the image from the server from uploads

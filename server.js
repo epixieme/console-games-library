@@ -4,10 +4,19 @@ const MongoClient = require("mongodb").MongoClient;
 const app = express();
 const ObjectID = require("mongodb").ObjectId;
 const multer  = require('multer')
-const upload = multer({ dest: './public/data/uploads/' })
+
 require("dotenv").config();
 
 // enables express to read info from forms
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+const upload = multer({ storage: storage })
 
 MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   .then((client) => {
@@ -41,6 +50,9 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.use(express.static("public")); // make public folder accessible
+    app.use('/uploads', express.static('uploads'));
+    app.use(express.static(__dirname + '/public'));
+    http://localhost:3004/profile-upload-single
     // ========================
     // Routes
     // ========================
@@ -64,18 +76,12 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
      
       const { search} = req.query;
       console.log(req.query);
-      gamesCollection.find({ $text: { $search: search } }).toArray(function(err, results){
+      gamesCollection.find({ $text: { $search: search } })
+      .toArray(function(err, results){
         // console.log(results);
             res.render("index.ejs", { games:results });// got to work out how to return to the main search page. maybe use a reset button that fetches get '/'
     });
-   
-    });
-
-    app.post('/images', upload.single('uploaded_file'), function (req, res) {
-      // req.file is the name of your file in the form above, here 'uploaded_file'
-      // req.body will hold the text fields, if there were any 
-      console.log(req.file, req.body)
-   });
+    });// try rewrite this to the same as the get request above
 
     app.post("/games", (req, res) => {
       // takes in the action route from the form
@@ -88,6 +94,21 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
         })
         .catch((error) => console.error(error));
     });
+
+
+app.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
+  // req.file is the `profile-file` file
+  // req.body will hold the text fields, if there were any
+  console.log(JSON.stringify(req.file))
+  console.log('what is this' + this)
+  let response = '<a href="/">Home</a><br>'
+  response += "Files uploaded successfully.<br>"
+  response += `<img src="${req.file.path}" /><br>`
+  res.send(response)
+  
+
+})
+
 
     app.put("/games", (request, response) => {
       console.log(request.body.id);
@@ -109,7 +130,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
           }
         )
         .then((result) => {
-          console.log("Added One Like");
+          console.log("updated game");
           response.json("game updated");
           response.redirect("/"); // creates a refresh and does a get() gets the ejs with the new data added from games object. see get request above.
         })
