@@ -8,6 +8,13 @@ const multer  = require('multer')
 require("dotenv").config();
 
 // enables express to read info from forms
+
+
+
+
+
+
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads')
@@ -106,6 +113,7 @@ app.post('/profile-upload-single', upload.single('profile-file'), function (req,
   response += `<img src="${req.file.path}" /><br>`
   res.send(response)
   
+// res.render("index.ejs", { post:response});
 
 })
 
