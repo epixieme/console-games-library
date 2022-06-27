@@ -253,6 +253,15 @@ margin:20px;
     padding: 10px;
 }
 
+.submit{
+    border:none
+}
+input#file-upload-button{
+background: red;
+border: 1px solid red;
+
+}
+
 @media (min-width: 800px) {
 
     .game{

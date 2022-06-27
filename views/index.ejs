@@ -89,13 +89,14 @@
           <button class="deleteGame">Delete</button>
   
         </section>
-        <form method="POST" action="/profile-upload-single" enctype="multipart/form-data">
+        <form method="POST" action="/upload" enctype="multipart/form-data">
           <div>
               <!-- <label>Upload profile picture</label> -->
-              <input type="file" name="profile-file" required/>
+              <input type="file" name="file" class="custom-file-input" id="file" required/>
+              <label for="file" class ="custom-file-label">Choose file</label>
           </div>
           <div>
-              <input type="submit" value="Upload" />
+              <input type="submit" value="submit" />
           </div>
       </form>
       

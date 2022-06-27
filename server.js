@@ -4,33 +4,61 @@ const MongoClient = require("mongodb").MongoClient;
 const app = express();
 const ObjectID = require("mongodb").ObjectId;
 const multer  = require('multer')
+const {GridFsStorage} = require('multer-gridfs-storage');
+const Grid = require('gridfs-stream');
+const crypto = require('crypto');
+const mongoose =require('mongoose')
+const path =require('path')
+
+
 
 require("dotenv").config();
 
-// enables express to read info from forms
 
-
-
-
-
-
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
-  }
-})
-const upload = multer({ storage: storage })
-
-MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
-  .then((client) => {
+ //init gfs 
+let gfs
+const conn = mongoose.createConnection(process.env.MONGO_URI, { useUnifiedTopology: true }, (err,client)=>{
+ 
     console.log("Connected to Database");
-    const db = client.db("console-games-library"); // renames the db
+    const db = conn.db
     const gamesCollection = db.collection("games"); //creates the collection
+    conn.once('open', ()=>{
+      //initialise stream
+      gfs = Grid(conn.db,mongoose.mongo)
+      gfs.collection('uploads')
+    })
    
+  
+
+//create storage engine
+const storage = new GridFsStorage({
+  url: process.env.MONGO_URI,
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'uploads'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+
+
+const upload = multer({ storage })
+
+
+
+
+
+
+
  
 // gamesCollection.insertMany([
 //   {"title": "Horizon","release":'2017',"developer":"Guerilla Games","platform":"PS4"},
@@ -90,6 +118,12 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     });
     });// try rewrite this to the same as the get request above
 
+
+    app.post('/upload',upload.single('file'),(req,res)=>{
+
+      res.redirect("/")
+
+    })
     app.post("/games", (req, res) => {
       // takes in the action route from the form
       gamesCollection
@@ -103,19 +137,7 @@ MongoClient.connect(process.env.MONGO_URI, { useUnifiedTopology: true })
     });
 
 
-app.post('/profile-upload-single', upload.single('profile-file'), function (req, res, next) {
-  // req.file is the `profile-file` file
-  // req.body will hold the text fields, if there were any
-  console.log(JSON.stringify(req.file))
-  console.log('what is this' + this)
-  let response = '<a href="/">Home</a><br>'
-  response += "Files uploaded successfully.<br>"
-  response += `<img src="${req.file.path}" /><br>`
-  res.send(response)
-  
-// res.render("index.ejs", { post:response});
 
-})
 
 
     app.put("/games", (request, response) => {
@@ -166,4 +188,4 @@ app.post('/profile-upload-single', upload.single('profile-file'), function (req,
       console.log(`Server running on port ${PORT}`); // set up heroku part  process.env.PORT || PORT so heroku or local port
     });
   })
-  .catch(console.error);
+
